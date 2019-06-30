@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperateExcel", "OperateExcel\OperateExcel.csproj", "{97E03F02-DA2B-499E-A316-B12831FDEEA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperateExcelTests", "OperateExcelTests\OperateExcelTests.csproj", "{4A3C0C08-1846-4FD1-B931-4C492ADF90E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97E03F02-DA2B-499E-A316-B12831FDEEA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E03F02-DA2B-499E-A316-B12831FDEEA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E03F02-DA2B-499E-A316-B12831FDEEA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E03F02-DA2B-499E-A316-B12831FDEEA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A3C0C08-1846-4FD1-B931-4C492ADF90E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3C0C08-1846-4FD1-B931-4C492ADF90E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3C0C08-1846-4FD1-B931-4C492ADF90E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3C0C08-1846-4FD1-B931-4C492ADF90E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCC62C4B-638E-49D8-9671-2E73220469C8}
+	EndGlobalSection
+EndGlobal
