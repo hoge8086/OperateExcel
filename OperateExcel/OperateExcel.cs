@@ -363,11 +363,52 @@ namespace OperateExcel
             }
         }
         /// <summary>
+        /// 行の値を読み取り文字列の一覧として返す
+        /// </summary>
+        /// <param name="row">行数(1開始)</param>
+        /// <param name="colRange">読み取る列範囲(例:"A:D")</param>
+        /// <returns>一覧(例:A1,B1,C1,D1の値の一覧を返す)</returns>
+        public List<string> ReadRow(int row, ColumnsRange colRange)
+        {
+            Range xlRange = null;
+            Range xlStartRange = null;
+            Range xlEndRange = null;
+
+            var result = new List<string>();
+            try
+            {
+                xlStartRange = xlSheet.Range[colRange.GetStartCell(row).A1Address];
+                xlEndRange = xlSheet.Range[colRange.GetEndCell(row).A1Address];
+                object[,] range = xlSheet.Range[xlStartRange, xlEndRange].Value2;
+                foreach (var cell in range)
+                    result.Add(cell != null ? cell.ToString() : string.Empty);
+
+                return result;
+            }
+            finally
+            {
+                if (xlRange != null)
+                {
+                    Marshal.ReleaseComObject(xlRange);
+                    xlRange = null;
+                }
+                if (xlStartRange != null)
+                {
+                    Marshal.ReleaseComObject(xlStartRange);
+                    xlStartRange = null;
+                }
+                if (xlEndRange != null)
+                {
+                    Marshal.ReleaseComObject(xlEndRange);
+                    xlEndRange = null;
+                }
+            }
+
+        }
+        /// <summary>
         /// 値を読み取る
         /// </summary>
         /// <typeparam name="T">読み取ったときの型</typeparam>
-        /// <param name="row">行番号(0開始)</param>
-        /// <param name="column">列番号(0開始)</param>
         /// <returns></returns>
         public T Read<T>(Cell cell)
         {

@@ -31,6 +31,36 @@ namespace OperateExcel
         }
     }
 
+    public class ColumnsRange : CellsRange
+    {
+        private ColumnsRange(string a1Address) : base(a1Address)
+        {
+        }
+
+        public static new ColumnsRange A1(string a1)
+        {
+            if (Regex.IsMatch(a1, @"^[a-zA-Z]+$"))
+                return new ColumnsRange(a1 + ":" + a1); 
+
+            if (Regex.IsMatch(a1, @"^[a-zA-Z]+:[a-zA-Z]+$"))
+                return new ColumnsRange(a1);
+
+            throw new ArgumentException(a1 +"は列(形式:「〇:〇」)を指定してください.");
+        }
+
+        public Cell GetStartCell(int row)
+        {
+            var columns = A1Address.Split(new char[] { ':' });
+            return Cell.A1(row, columns[0]);
+        }
+        public Cell GetEndCell(int row)
+        {
+            var columns = A1Address.Split(new char[] { ':' });
+            return Cell.A1(row, columns[1]);
+        }
+
+    }
+
     public class Cell : CellsRange
     {
         private Cell(string a1Address) : base(a1Address) { }

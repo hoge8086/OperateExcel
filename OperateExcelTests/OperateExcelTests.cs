@@ -258,5 +258,22 @@ namespace OperateExcel.Tests
                 Assert.AreEqual(false, excel.IsStrikethrough(CellsRange.A1("B15:C15")));
             }
         }
+
+        [TestMethod()]
+        public void ReadRowTest()
+        {
+            using (var excel = new OperateExcel())
+            {
+                excel.Open("template.xlsx");
+                excel.SelectSheet("Sheet2");
+                var row = excel.ReadRow(4, ColumnsRange.A1("B:F"));
+                Assert.AreEqual("あ", row[0]);
+                Assert.AreEqual("い", row[1]);
+                Assert.AreEqual("う", row[2]);
+                Assert.AreEqual("え", row[3]);
+                Assert.AreEqual("", row[4]);
+                Assert.AreEqual(5, row.Count);
+            }
+        }
     }
 }
