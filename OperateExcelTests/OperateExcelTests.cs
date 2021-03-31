@@ -275,5 +275,17 @@ namespace OperateExcel.Tests
                 Assert.AreEqual(5, row.Count);
             }
         }
+        [TestMethod()]
+        public void ReadRowTestOne()
+        {
+            using (var excel = new OperateExcel())
+            {
+                excel.Open("template.xlsx");
+                excel.SelectSheet("Sheet2");
+                var row = excel.ReadRow(4, ColumnsRange.A1("B:B"));
+                Assert.AreEqual("あ", row[0]);
+                Assert.AreEqual(1, row.Count);
+            }
+        }
     }
 }

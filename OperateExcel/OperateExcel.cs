@@ -379,9 +379,17 @@ namespace OperateExcel
             {
                 xlStartRange = xlSheet.Range[colRange.GetStartCell(row).A1Address];
                 xlEndRange = xlSheet.Range[colRange.GetEndCell(row).A1Address];
-                object[,] range = xlSheet.Range[xlStartRange, xlEndRange].Value2;
-                foreach (var cell in range)
-                    result.Add(cell != null ? cell.ToString() : string.Empty);
+                var range = xlSheet.Range[xlStartRange, xlEndRange].Value2;
+
+                if(range is string)
+                {
+                    result.Add(range ?? string.Empty);
+                }
+                else
+                {
+                    foreach (var cell in range)
+                        result.Add(cell != null ? cell.ToString() : string.Empty);
+                }
 
                 return result;
             }
